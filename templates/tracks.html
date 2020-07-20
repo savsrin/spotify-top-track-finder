@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <!--Import bootstrap.css here using the CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{{user_artist}}'s top ten tracks</title>
+        <!-- <script src="{{ url_for('static', filename='style.css') }}"></script> -->
+        <!-- <link rel="stylesheet" href="{{ static_url }}"> -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    </head>
+    <!-- <body style="background-color:black"> -->
+    <body class="black">
+        <div class="container">
+            <div class="row">
+            <h1 style="text-align:center"></h1>
+            </div>
+            {% for i in range(user_top_tracks| length) %}
+                <div class="row">
+                    <div class = "col-md-2"></div>
+                    <div class="col d-flex justify-content-center">
+                        <div class="card bg-dark" style="width: 18rem;">
+                        <img src= {{user_top_tracks[i][1]}} class="card-img-top" alt="...">
+                        <div class="card-body mx-auto">
+                            <h5 class="card-title text-white text-center">Number {{i+1}} </h5>
+                            <p class="card-text text-white text-center"> {{user_top_tracks[i][0]}}</p>
+                            <a href={{user_top_tracks[i][2]}} class="btn btn-success">Listen now</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-2"> </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
